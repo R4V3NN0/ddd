@@ -9,14 +9,14 @@ import java.util.ArrayList
 @ApplicationScoped
 class RaumRepositoryImpl: RaumRepository{
 
-    private val liste = mutableListOf();
+    private val liste: MutableList<Raum> = mutableListOf();
 
     override fun speichere(raum: Raum) {
-        liste.add
-        TODO("Not yet implemented")
+        liste.add(raum)
     }
 
-    override fun sucheNachRaumNummer(raumNummer: RaumNummer): Raum? {
-        TODO("Not yet implemented")
-    }
+    override fun sucheNachRaumNummer(raumNummer: RaumNummer): Raum? =
+        liste.filter {
+            it.nummer.nummer == raumNummer.nummer
+        }.firstOrNull()
 }
