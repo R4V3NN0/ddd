@@ -4,7 +4,7 @@ import java.util.UUID
 
 // Entity
 class Person(
-    val id: UUID,
+    val id: UUID = UUID.randomUUID(),
     val benutzername: Benutzername,
     val vorname: Vorname,
     val name: Name,

@@ -1,7 +1,6 @@
 package de.neusta.application
 
 import de.neusta.domain.Raum
-import de.neusta.domain.RaumNummer
 import de.neusta.domain.RaumRepository
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.inject.Inject
@@ -19,7 +18,7 @@ class RaumService {
     fun erzeugeRaum(raumName: String, raumNummer: String) : Raum? {
         if(!istRaumNummerValide(raumNummer)) return null;
         if(existiertRaumNummerBereits(raumNummer)) return null;
-        Raum(raumName, RaumNummer(raumNummer)).let {
+        Raum(raumName, Raum.RaumNummer(raumNummer)).let {
             repository.speichere(it);
             return it;
         }
@@ -32,6 +31,8 @@ class RaumService {
     }
 
     private fun existiertRaumNummerBereits(raumNummer: String) : Boolean {
-        return repository.sucheNachRaumNummer(RaumNummer(raumNummer)) != null;
+        return repository.sucheNachRaumNummer(Raum.RaumNummer(raumNummer)) != null;
     }
+
+    fun raumAbfragen(raumNummer: String): Raum? = repository.sucheNachRaumNummer(Raum.RaumNummer(raumNummer))
 }
