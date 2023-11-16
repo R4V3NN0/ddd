@@ -1,4 +1,4 @@
-package de.neusta
+package de.neusta.application.dto
 
 import de.neusta.domain.Raum
 

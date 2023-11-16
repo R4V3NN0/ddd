@@ -1,8 +1,10 @@
-package de.neusta
+package de.neusta.infracstructure.resources
 
 import de.neusta.application.PersonHinzufügen
 import de.neusta.application.RaumService
-import de.neusta.domain.Raum
+import de.neusta.application.dto.GetRaumDto
+import de.neusta.application.dto.PersonDto
+import de.neusta.application.dto.RaumDto
 import jakarta.inject.Inject
 import jakarta.ws.rs.Consumes
 import jakarta.ws.rs.GET

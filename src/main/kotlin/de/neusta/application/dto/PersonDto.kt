@@ -1,4 +1,4 @@
-package de.neusta
+package de.neusta.application.dto
 
 import de.neusta.domain.Person
 
@@ -14,4 +14,3 @@ data class PersonDto(val benutzername: Person.Benutzername,
         namenszusatz = namenszusatz
     )
 }
-

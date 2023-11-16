@@ -1,6 +1,6 @@
 package de.neusta.application
 
-import de.neusta.PersonDto
+import de.neusta.application.dto.PersonDto
 import de.neusta.domain.Person
 import de.neusta.domain.Raum
 import de.neusta.domain.RaumRepository
