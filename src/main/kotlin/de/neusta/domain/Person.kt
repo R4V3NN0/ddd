@@ -32,10 +32,10 @@ class Person(
 
     fun berechneKurzschreibweise(): String {
         val builder = StringBuilder()
-        builder.append(vorname).append(" ")
-        if (namenszusatz != null) builder.append(namenszusatz).append(" ")
-        builder.append(name).append(" ")
-        builder.append("($benutzername)")
+        builder.append(vorname.value).append(" ")
+        if (namenszusatz != null) builder.append(namenszusatz.value).append(" ")
+        builder.append(name.value).append(" ")
+        builder.append("(${benutzername.value})")
         return builder.toString()
     }
 

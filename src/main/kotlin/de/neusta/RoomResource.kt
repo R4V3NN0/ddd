@@ -54,6 +54,6 @@ class RoomResource {
         raumNummer: String
     ): Response = raumService.raumAbfragen(raumNummer).let {
         if (it == null) return Response.status(Response.Status.BAD_REQUEST).build()
-        return Response.ok(it).build()
+        return Response.ok(GetRaumDto(it)).build()
     }
 }
