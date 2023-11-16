@@ -1,22 +1,26 @@
 package de.neusta.application
 
-import de.neusta.application.dto.PersonDto
 import de.neusta.domain.Person
+import de.neusta.domain.PersonRepository
 import de.neusta.domain.Raum
 import de.neusta.domain.RaumRepository
 import jakarta.enterprise.context.ApplicationScoped
-import jakarta.inject.Inject
+import kotlin.jvm.optionals.getOrNull
 
 @ApplicationScoped
-class PersonHinzufügen {
+class PersonHinzufügen(private val repository: RaumRepository, private val personRepository: PersonRepository) {
 
-    @Inject
-    private lateinit var repository: RaumRepository;
-
-    operator fun invoke(raumNummer: String, person: PersonDto): Raum? {
-        val raum = repository.sucheNachRaumNummer(Raum.RaumNummer(raumNummer)) ?: return null
-        raum fügePersonHinzu person.toDomain()
+    operator fun invoke(raumId: Raum.ID, personId: Person.ID): Ergebnis {
+        val raum = repository.sucheNachId(raumId) ?: return RaumNichtGefunden
+        val person = personRepository.sucheNachId(personId).getOrNull() ?: return PersonNichtGefunden
+        raum fügePersonHinzu person.id
         repository.speichere(raum)
-        return raum
+        return Erfolg
     }
+
+    sealed class Ergebnis
+
+    data object RaumNichtGefunden : Ergebnis()
+    data object PersonNichtGefunden : Ergebnis()
+    data object Erfolg : Ergebnis()
 }

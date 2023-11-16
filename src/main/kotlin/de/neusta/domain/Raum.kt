@@ -1,10 +1,20 @@
 package de.neusta.domain
 
+import java.util.*
+
 // Aggregat
-class Raum(val name: String, val nummer: RaumNummer, var personen: List<Person> = mutableListOf()) {
-    infix fun fügePersonHinzu(person: Person) {
-        personen += person
+class Raum(
+    val id: ID = ID(),
+    val name: Name,
+    val nummer: Nummer,
+    val personen: MutableList<Person.ID> = mutableListOf()
+) {
+    infix fun fügePersonHinzu(id: Person.ID) {
+        this.personen.add(id)
     }
 
-    data class RaumNummer (val nummer: String);
+    // Value-Objects
+    data class ID(val value: UUID = UUID.randomUUID())
+    data class Name(val value: String)
+    data class Nummer(val value: String);
 }

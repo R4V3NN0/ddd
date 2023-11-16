@@ -5,7 +5,7 @@ import de.neusta.domain.RaumRepository
 import jakarta.enterprise.context.ApplicationScoped
 
 @ApplicationScoped
-class RaumRepositoryImpl: RaumRepository{
+class RaumRepositoryImpl : RaumRepository {
 
     private val liste: MutableList<Raum> = mutableListOf()
 
@@ -14,8 +14,13 @@ class RaumRepositoryImpl: RaumRepository{
         liste.add(raum)
     }
 
-    override fun sucheNachRaumNummer(raumNummer: Raum.RaumNummer): Raum? =
+    override fun sucheNachRaumNummer(raumNummer: Raum.Nummer): Raum? =
         liste.filter {
-            it.nummer.nummer == raumNummer.nummer
+            it.nummer.value == raumNummer.value
+        }.firstOrNull()
+
+    override fun sucheNachId(raumId: Raum.ID): Raum? =
+        liste.filter {
+            it.id == raumId
         }.firstOrNull()
 }

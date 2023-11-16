@@ -2,9 +2,9 @@ package de.neusta.domain
 
 import java.util.UUID
 
-// Entity
+// Aggregat
 class Person(
-    val id: UUID = UUID.randomUUID(),
+    val id: ID = ID(),
     val benutzername: Benutzername,
     val vorname: Vorname,
     val name: Name,
@@ -13,6 +13,7 @@ class Person(
 
 
     // Value-Objects
+    data class ID(val value: UUID = UUID.randomUUID())
     data class Vorname(val value: String)
     data class Namenszusatz(val value: String) {
 
@@ -30,7 +31,7 @@ class Person(
     data class Benutzername(val value: String)
     data class Kurzschreibweise(val value: String)
 
-    fun berechneKurzschreibweise(): String {
+     fun berechneKurzschreibweise(): String {
         val builder = StringBuilder()
         builder.append(vorname.value).append(" ")
         if (namenszusatz != null) builder.append(namenszusatz.value).append(" ")

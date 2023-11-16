@@ -1,35 +1,27 @@
 package de.neusta.infracstructure.resources
 
+import de.neusta.application.GibRaumMitKurzschreibweise
 import de.neusta.application.PersonHinzufügen
 import de.neusta.application.RaumService
-import de.neusta.application.dto.GetRaumDto
-import de.neusta.application.dto.PersonDto
-import de.neusta.application.dto.RaumDto
-import jakarta.inject.Inject
-import jakarta.ws.rs.Consumes
-import jakarta.ws.rs.GET
-import jakarta.ws.rs.POST
-import jakarta.ws.rs.PUT
-import jakarta.ws.rs.Path
-import jakarta.ws.rs.PathParam
-import jakarta.ws.rs.Produces
+import de.neusta.domain.Person
+import de.neusta.domain.Raum
+import de.neusta.infracstructure.dto.RaumDto
+import jakarta.ws.rs.*
 import jakarta.ws.rs.core.MediaType
 import jakarta.ws.rs.core.Response
+import java.util.*
 
 @Path("/api/room")
-class RoomResource {
-
-    @Inject
-    private lateinit var raumService: RaumService
-
-    @Inject
-    private lateinit var personHinzufügen: PersonHinzufügen
+class RoomResource(
+    private val raumService: RaumService,
+    private val personHinzufügen: PersonHinzufügen,
+    private val gibRaumMitKurzschreibweise: GibRaumMitKurzschreibweise
+) {
 
     // TODO: Change aggregate to response dto
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/")
     fun `raum erstellen`(
         erstellenDto: RaumDto
     ): Response = raumService.erzeugeRaum(erstellenDto.name, erstellenDto.raumNummer).let {
@@ -38,24 +30,25 @@ class RoomResource {
     }
 
     @PUT
-    @Path("/{raum_nummer}/person")
+    @Path("/{raumId}/person/{personId}")
     fun `hizufügen einer Person`(
-        @PathParam("raum_nummer")
-        raumNummer: String,
-        personDto: PersonDto
-    ): Response = personHinzufügen(raumNummer, personDto).let {
-        if (it == null) return Response.status(Response.Status.BAD_REQUEST).build()
-        return Response.ok().build()
+        @PathParam("raumId")
+        raumId: String,
+        @PathParam("personId")
+        personId: String
+    ): Response = personHinzufügen(Raum.ID(UUID.fromString(raumId)), Person.ID(UUID.fromString(personId))).let {
+        when (it) {
+            is PersonHinzufügen.Erfolg -> return Response.ok().build()
+            else -> return Response.status(Response.Status.BAD_REQUEST).build()
+        }
     }
 
     @GET
-    @Path("/{raum_nummer}")
+    @Path("/{raumId}")
     @Produces(MediaType.APPLICATION_JSON)
     fun `raum abfragen`(
-        @PathParam("raum_nummer")
-        raumNummer: String
-    ): Response = raumService.raumAbfragen(raumNummer).let {
-        if (it == null) return Response.status(Response.Status.BAD_REQUEST).build()
-        return Response.ok(GetRaumDto(it)).build()
-    }
+        @PathParam("raumId")
+        raumId: String
+    ): Response = gibRaumMitKurzschreibweise(Raum.ID(UUID.fromString(raumId)))?.let { Response.ok(it).build() }
+        ?: Response.status(Response.Status.BAD_REQUEST).build()
 }
