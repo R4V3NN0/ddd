@@ -1,0 +1,189 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2023-11-17T12:07:18.245Z",
+  "__export_source": "insomnia.desktop.app:v0.2.1-b",
+  "resources": [
+    {
+      "_id": "req_97283d10e1364b069997e41af0909e7e",
+      "parentId": "wrk_a05fd3e1efe54888832a5ccd9c668b6f",
+      "modified": 1700142551345,
+      "created": 1700141249685,
+      "url": "http://localhost:8080/api/person/",
+      "name": "POST Person",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"benutzername\": \"jon20\",\n\t\"name\": \"Doe\",\n\t\"vorname\": \"John\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "insomnia/0.2.1-b" }
+      ],
+      "authentication": {},
+      "metaSortKey": -1700141249685,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "segmentParams": [],
+      "_type": "request"
+    },
+    {
+      "_id": "wrk_a05fd3e1efe54888832a5ccd9c668b6f",
+      "parentId": null,
+      "modified": 1700124883782,
+      "created": 1700124883782,
+      "name": "DDD - Hexagonal",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_13dd5ef5d7604d0ea36f9faf57dba1c2",
+      "parentId": "wrk_a05fd3e1efe54888832a5ccd9c668b6f",
+      "modified": 1700124987354,
+      "created": 1700124973558,
+      "url": "http://localhost:8080/api/hello",
+      "name": "hello",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [{ "name": "User-Agent", "value": "insomnia/0.2.1-b" }],
+      "authentication": {},
+      "metaSortKey": -1700124973558,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "segmentParams": [],
+      "_type": "request"
+    },
+    {
+      "_id": "req_804d46af9c4b4579868f367b8b6eb1e2",
+      "parentId": "wrk_a05fd3e1efe54888832a5ccd9c668b6f",
+      "modified": 1700145530379,
+      "created": 1700124942138,
+      "url": "http://localhost:8080/api/room/09c07e67-8f66-414e-ba7d-9feee92c0974/person/bd4bdd7f-9cb9-4c2c-905a-702499616ab0",
+      "name": "PUT person",
+      "description": "",
+      "method": "PUT",
+      "body": {},
+      "parameters": [],
+      "headers": [{ "name": "User-Agent", "value": "insomnia/0.2.1-b" }],
+      "authentication": {},
+      "metaSortKey": -1700124942138,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "segmentParams": [
+        {
+          "name": "JC5pZC52YWx1ZQ",
+          "value": "",
+          "disabled": false,
+          "id": "pair_32316fb97eb24cc48f3fbca249a2f480ending0",
+          "fileName": ""
+        }
+      ],
+      "_type": "request"
+    },
+    {
+      "_id": "req_9141b8e62e3a47b49f437879b31c2e84",
+      "parentId": "wrk_a05fd3e1efe54888832a5ccd9c668b6f",
+      "modified": 1700138598904,
+      "created": 1700124916119,
+      "url": "http://localhost:8080/api/room",
+      "name": "POST raum",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"Mein cooler Raum\",\n\t\"raumNummer\": \"1234\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_4a3cabb46f0f44ea8f51776e84646827"
+        },
+        {
+          "name": "User-Agent",
+          "value": "insomnia/0.2.1-b",
+          "id": "pair_f0a0819e1f754827b7e4b864150e53c3",
+          "disabled": false
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1700124916119,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "segmentParams": [],
+      "_type": "request"
+    },
+    {
+      "_id": "req_ab22914ab38d4a3bb3e9f7ef14e03431",
+      "parentId": "wrk_a05fd3e1efe54888832a5ccd9c668b6f",
+      "modified": 1700145636081,
+      "created": 1700124889655,
+      "url": "http://localhost:8080/api/room/09c07e67-8f66-414e-ba7d-9feee92c0974",
+      "name": "GET raum",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [{ "name": "User-Agent", "value": "insomnia/0.2.1-b" }],
+      "authentication": {},
+      "metaSortKey": -1700124889655,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "segmentParams": [],
+      "_type": "request"
+    },
+    {
+      "_id": "env_e0064fa064ecd57245c1e706fdd56fb54871ee6c",
+      "parentId": "wrk_a05fd3e1efe54888832a5ccd9c668b6f",
+      "modified": 1700124883785,
+      "created": 1700124883785,
+      "name": "Base Environment",
+      "data": {},
+      "dataPropertyOrder": null,
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1700124883785,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_e0064fa064ecd57245c1e706fdd56fb54871ee6c",
+      "parentId": "wrk_a05fd3e1efe54888832a5ccd9c668b6f",
+      "modified": 1700124883786,
+      "created": 1700124883786,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    }
+  ]
+}
