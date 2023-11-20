@@ -15,13 +15,13 @@ class PersonRepositoryImpl : PersonRepository {
     }
 
     override fun sucheNachBenutzername(benutzername: Person.Benutzername): Optional<Person> =
-        liste.filter {
+        liste.firstOrNull {
             it.benutzername == benutzername
-        }.firstOrNull()?.let { Optional.of(it) } ?: Optional.empty()
+        }?.let { Optional.of(it) } ?: Optional.empty()
 
     override fun sucheNachId(personId: Person.ID): Optional<Person> =
-        liste.filter {
+        liste.firstOrNull {
             it.id == personId
-        }.firstOrNull()?.let { Optional.of(it) } ?: Optional.empty()
+        }?.let { Optional.of(it) } ?: Optional.empty()
 
 }
